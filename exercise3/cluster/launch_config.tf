@@ -1,5 +1,5 @@
 locals {
-  unique_id="paresh"
+
 }
 
 resource "aws_ecs_cluster" "ecs-cluster" {
@@ -22,7 +22,6 @@ resource "aws_launch_configuration" "ecs-launch-config" {
   security_groups = [ "${aws_security_group.ecs-instance-security.id}" ]
 
   name_prefix = "${local.unique_id}-lc"
-  # [TODO] NOTE: ECSAutoScalingGroup - IS Refered from the CloudFormation template for autoscaling group.
   user_data = <<-EOF
               #!/bin/bash
               cat <<'CONFIG' >> /etc/ecs/ecs.config
